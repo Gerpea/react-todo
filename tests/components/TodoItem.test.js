@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { render, cleanup } from '@testing-library/react'
+
+import { emptyWrapper, render, cleanup } from '../utils'
 import renderer from 'react-test-renderer'
 
 import TodoItem from '../../src/components/TodoItem'
@@ -8,18 +8,16 @@ import TodoItem from '../../src/components/TodoItem'
 afterEach(cleanup)
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-
-  ReactDOM.render(<TodoItem />, div)
+  render(<TodoItem />)
 })
 
 describe('title', () => {
   it('renders correctly', () => {
-    const expected = 'Item'
+    const todo = { title: 'Item' }
 
-    const { queryByText } = render(<TodoItem title={expected} />)
+    const { queryByText } = render(<TodoItem todo={todo} />)
 
-    expect(queryByText(expected)).not.toBeNull()
+    expect(queryByText(todo.title)).not.toBeNull()
   })
 })
 
@@ -33,7 +31,7 @@ describe('isDone', () => {
   it('should render checked when true', () => {
     const expected = true
 
-    const { getByTestId } = render(<TodoItem isDone={expected} />)
+    const { getByTestId } = render(<TodoItem todo={{ isDone: expected }} />)
 
     expect(getByTestId('item')).toHaveAttribute('value', expected.toString())
   })
@@ -41,7 +39,7 @@ describe('isDone', () => {
   it('should render unchecked when false', () => {
     const expected = false
 
-    const { getByTestId } = render(<TodoItem isDone={expected} />)
+    const { getByTestId } = render(<TodoItem todo={{ isDone: expected }} />)
 
     expect(getByTestId('item')).toHaveAttribute('value', expected.toString())
   })
@@ -49,13 +47,13 @@ describe('isDone', () => {
 
 describe('delete link', () => {
   it('should not render delete link when isDone is false', () => {
-    const { queryByTestId } = render(<TodoItem isDone={false} />)
+    const { queryByTestId } = render(<TodoItem todo={{ isDone: false }} />)
 
     expect(queryByTestId('delete-link')).toBeNull()
   })
 
   it('should render delete link when isDone is true', () => {
-    const { queryByTestId } = render(<TodoItem isDone={true} />)
+    const { queryByTestId } = render(<TodoItem todo={{ isDone: true }} />)
 
     expect(queryByTestId('delete-link')).not.toBeNull()
   })
@@ -64,7 +62,7 @@ describe('delete link', () => {
 })
 
 it('matches snapshot', () => {
-  const tree = renderer.create(<TodoItem isDone={true} title='Item' />).toJSON()
+  const tree = renderer.create(emptyWrapper(<TodoItem todo={{ title: 'Item' }} />)).toJSON()
 
   expect(tree).toMatchSnapshot()
 })

@@ -40,14 +40,18 @@ Array [
         >
           <button
             className="btn btn-primary"
+            data-testid="delete-todo"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
             Да
           </button>
           <button
             className="btn btn-secondary"
+            data-testid="not-delete-todo"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
             Нет

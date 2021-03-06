@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
+
+import { markTodo } from '../state/todos/actions'
+
 import TodoItem from '../components/TodoItem'
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos.todos,
-  }
+const mapDispatchToProps = {
+  markTodo: (uid, isDone) => markTodo(uid, isDone),
 }
-const mapDispatchToProps = () => {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItem)
+export default connect(null, mapDispatchToProps)(TodoItem)

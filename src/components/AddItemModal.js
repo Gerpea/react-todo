@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+
 import { Col, Form, Modal, Button } from 'react-bootstrap'
 
-const AddItemModal = ({ todos, ...rest }) => {
+const AddItemModal = ({ todos, onCreate, ...rest }) => {
   const [parent, setParent] = useState()
+  const [parents, setParents] = useState([])
+  const [title, setTitle] = useState('')
 
   useEffect(() => {
-    if (todos.length > 0) {
-      setParent(todos[0].uid)
-    }
-  }, [])
+    setParents([{ title: 'Не выбрано' }, ...todos])
+  }, [todos])
 
   return (
     <Modal {...rest} animation={false}>
@@ -28,7 +29,7 @@ const AddItemModal = ({ todos, ...rest }) => {
                   as='select'
                   value={parent}
                   onSelect={(e) => setParent(e.target.value)}>
-                  {todos.map((todo, i) => {
+                  {parents.map((todo, i) => {
                     return (
                       <option value={todo.uid} key={todo.uid ?? i}>
                         {todo.title}
@@ -56,7 +57,15 @@ const AddItemModal = ({ todos, ...rest }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='primary'>Добавить</Button>
+        <Button
+          variant='primary'
+          onClick={() => {
+            rest.onHide?.call()
+            onCreate?.call(undefined, title)
+          }}
+          data-testid='add-todo'>
+          Добавить
+        </Button>
       </Modal.Footer>
     </Modal>
   )
@@ -64,10 +73,12 @@ const AddItemModal = ({ todos, ...rest }) => {
 
 AddItemModal.propTypes = {
   todos: PropTypes.array,
+  onCreate: PropTypes.func,
 }
 
 AddItemModal.defaultProps = {
   todos: [],
+  onCreate: () => {},
 }
 
 export default AddItemModal

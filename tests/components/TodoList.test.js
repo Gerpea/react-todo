@@ -1,6 +1,5 @@
 import React from 'react'
-import ReactDOM, { findDOMNode } from 'react-dom'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import renderer from 'react-test-renderer'
 
 import TodoList from '../../src/components/TodoList'
@@ -8,8 +7,7 @@ import TodoList from '../../src/components/TodoList'
 afterEach(cleanup)
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<TodoList />, div)
+  render(<TodoList />)
 })
 
 describe('todos', () => {
@@ -56,7 +54,7 @@ describe('add item', () => {
 })
 
 it('matches snapshot', () => {
-  const tree = renderer.create(<TodoList />).toJSON()
+  const tree = renderer.create(emptyWrapper(<TodoList />)).toJSON()
 
   expect(tree).toMatchSnapshot()
 })

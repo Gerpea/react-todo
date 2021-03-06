@@ -1,37 +1,53 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Form } from 'react-bootstrap'
-import DeleteItemModal from './DeleteItemModal'
 
-const TodoItem = ({ isDone, title }) => {
+import { Card, Form, Row, Col } from 'react-bootstrap'
+
+import DeleteItemModal from '../containers/DeleteItemModal'
+
+const TodoItem = ({ todo, markTodo }) => {
   const [show, setShow] = useState(false)
   return (
     <>
       <Card body data-testid='todo-item'>
-        <Form.Check data-testid='item' type='checkbox' label={title} value={isDone} />
-        {isDone && (
-          <Card.Link
-            data-testid='delete-link'
-            onClick={() => {
-              setShow(true)
-            }}>
-            Удалить
-          </Card.Link>
-        )}
+        <Row>
+          <Col>
+            <Form.Check
+              data-testid='item'
+              type='checkbox'
+              label={todo.title}
+              value={todo.isDone || false}
+              onClick={() => {
+                markTodo?.call(undefined, todo.uid, !todo.isDone)
+              }}
+            />
+          </Col>
+          <Col>
+            {todo.isDone && (
+              <Card.Link
+                data-testid='delete-link'
+                onClick={() => {
+                  setShow(true)
+                }}>
+                Удалить
+              </Card.Link>
+            )}
+          </Col>
+        </Row>
       </Card>
-      <DeleteItemModal show={show} onHide={() => setShow(false)} />
+      <DeleteItemModal todo={todo} show={show} onHide={() => setShow(false)} />
     </>
   )
 }
 
 TodoItem.propTypes = {
-  isDone: PropTypes.bool,
-  title: PropTypes.string,
+  todo: PropTypes.object,
+  markTodo: PropTypes.func,
 }
 
 TodoItem.defaultProps = {
-  isDone: false,
-  title: '',
+  todo: {},
+  markTodo: () => {},
 }
 
 export default TodoItem

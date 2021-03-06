@@ -1,9 +1,10 @@
 import React from 'react'
 
 import './App.scss'
+import TodoList from './containers/TodoList'
 
 const App = () => {
-  return <h1 data-testid='header'>Hello</h1>
+  return <TodoList />
 }
 
 export default App
