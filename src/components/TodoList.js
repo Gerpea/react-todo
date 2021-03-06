@@ -2,13 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TodoItem from './TodoItem'
+import { Button } from 'react-bootstrap'
 
 const TodoList = ({ todos }) => {
   return (
     <>
-      {todos.map((todo) => {
-        return <TodoItem isDone={todo.isDone} title={todo.title} key={todo.uid} />
-      })}
+      <div data-testid='todo-list'>
+        {todos.map((todo, i) => {
+          return <TodoItem isDone={todo.isDone} title={todo.title} key={todo.uid ?? i} />
+        })}
+      </div>
+      <Button data-testid='add-item' variant='primary'>
+        Добавить элемент
+      </Button>
     </>
   )
 }
