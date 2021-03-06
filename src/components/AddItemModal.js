@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Col, Form, Modal } from 'react-bootstrap'
+import { Col, Form, Modal, Button } from 'react-bootstrap'
 
-const AddItem = ({ todos }) => {
+const AddItemModal = ({ todos, ...rest }) => {
   const [parent, setParent] = useState()
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const AddItem = ({ todos }) => {
   }, [])
 
   return (
-    <Modal.Dialog>
+    <Modal {...rest} animation={false}>
       <Modal.Header>
         <Modal.Title>Добавить элемент</Modal.Title>
       </Modal.Header>
@@ -38,14 +38,15 @@ const AddItem = ({ todos }) => {
                 </Form.Control>
               </Col>
             </Form.Row>
+          </Form.Group>
+          <Form.Group controlId='title'>
             <Form.Row>
               <Col>
-                <Form.Label htmlFor='title'>Заголовок</Form.Label>
+                <Form.Label>Заголовок</Form.Label>
               </Col>
               <Col>
                 <Form.Control
                   type="input'"
-                  id='title'
                   defaultValue=''
                   onChange={(e) => setTitle(e.target.value)}
                 />
@@ -57,16 +58,16 @@ const AddItem = ({ todos }) => {
       <Modal.Footer>
         <Button variant='primary'>Добавить</Button>
       </Modal.Footer>
-    </Modal.Dialog>
+    </Modal>
   )
 }
 
-AddItem.propTypes = {
+AddItemModal.propTypes = {
   todos: PropTypes.array,
 }
 
-AddItem.defaultProps = {
+AddItemModal.defaultProps = {
   todos: [],
 }
 
-export default AddItem
+export default AddItemModal

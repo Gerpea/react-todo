@@ -9,6 +9,7 @@ Array [
     className="btn btn-primary"
     data-testid="add-item"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Добавить элемент

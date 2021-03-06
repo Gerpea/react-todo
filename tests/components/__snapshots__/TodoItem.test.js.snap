@@ -3,6 +3,7 @@
 exports[`matches snapshot 1`] = `
 <div
   className="card"
+  data-testid="todo-item"
 >
   <div
     className="card-body"
@@ -27,6 +28,7 @@ exports[`matches snapshot 1`] = `
     <a
       className="card-link"
       data-testid="delete-link"
+      onClick={[Function]}
     >
       Удалить
     </a>

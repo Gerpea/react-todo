@@ -59,6 +59,8 @@ describe('delete link', () => {
 
     expect(queryByTestId('delete-link')).not.toBeNull()
   })
+
+  it('should open delete modal when clicked', () => {})
 })
 
 it('matches snapshot', () => {

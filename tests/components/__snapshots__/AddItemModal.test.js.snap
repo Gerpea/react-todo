@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    className="modal-backdrop show"
+    onClick={[Function]}
+  />
+  <div
+    aria-modal={true}
+    className="modal"
+    onClick={[Function]}
+    onMouseUp={[Function]}
+    role="dialog"
+    style={
+      Object {
+        "display": "block",
+      }
+    }
+    tabIndex={-1}
+  >
+    <div
+      className="modal-dialog"
+      onMouseDown={[Function]}
+    >
+      <div
+        className="modal-content"
+      >
+        <div
+          className="modal-header"
+        >
+          <div
+            className="modal-title h4"
+          >
+            Добавить элемент
+          </div>
+        </div>
+        <div
+          className="modal-body"
+        >
+          <form
+            className=""
+          >
+            <div
+              className="form-group"
+              data-testid="select-parent"
+            >
+              <div
+                className="form-row"
+              >
+                <div
+                  className="col"
+                >
+                  <label
+                    className="form-label"
+                    htmlFor="parent-todo"
+                  >
+                    Родительский элемент
+                  </label>
+                </div>
+                <div
+                  className="col"
+                >
+                  <select
+                    className="form-control"
+                    id="parent-todo"
+                    onSelect={[Function]}
+                    value="1"
+                  >
+                    <option
+                      value="1"
+                    >
+                      Item 1
+                    </option>
+                    <option
+                      value="2"
+                    >
+                      Item 2
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div
+              className="form-group"
+            >
+              <div
+                className="form-row"
+              >
+                <div
+                  className="col"
+                >
+                  <label
+                    className="form-label"
+                    htmlFor="title"
+                  >
+                    Заголовок
+                  </label>
+                </div>
+                <div
+                  className="col"
+                >
+                  <input
+                    className="form-control"
+                    defaultValue=""
+                    id="title"
+                    onChange={[Function]}
+                    type="input'"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          className="modal-footer"
+        >
+          <button
+            className="btn btn-primary"
+            disabled={false}
+            type="button"
+          >
+            Добавить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
