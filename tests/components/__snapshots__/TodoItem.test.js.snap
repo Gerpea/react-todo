@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="form-check"
+    >
+      <input
+        className="form-check-input"
+        data-testid="item"
+        disabled={false}
+        type="checkbox"
+        value={true}
+      />
+      <label
+        className="form-check-label"
+        title=""
+      >
+        Item
+      </label>
+    </div>
+    <a
+      className="card-link"
+      data-testid="delete-link"
+    >
+      Удалить
+    </a>
+  </div>
+</div>
+`;
