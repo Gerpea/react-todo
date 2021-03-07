@@ -6,7 +6,7 @@ import TodoList from './containers/TodoList'
 
 const App = () => {
   return (
-    <Container fluid='md' className='vh-100 pt-2 pb-3'>
+    <Container fluid='md' className='h-100 pt-2 pb-3'>
       <TodoList />
     </Container>
   )
