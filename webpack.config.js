@@ -127,7 +127,7 @@ module.exports = (env, argv) => {
             : undefined
         )
       ),
-      new FaviconsWebpackPlugin('./assets/logo.png'),
+      ...(!isDevelopmentnew ? [FaviconsWebpackPlugin('./assets/logo.png')] : []),
       ...(!isDevelopment
         ? [
             new MiniCssExtractPlugin({
