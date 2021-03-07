@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --open --mode development",
     "build": "webpack --mode production",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress open"
   },
   "author": "gerpea",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.1",
+    "cypress": "^6.6.0",
     "fibers": "^5.0.0",
     "html-webpack-plugin": "^5.2.0",
     "identity-obj-proxy": "^3.0.0",
