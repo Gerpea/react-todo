@@ -20,7 +20,7 @@ exports[`matches snapshot 1`] = `
     tabIndex={-1}
   >
     <div
-      className="modal-dialog"
+      className="modal-dialog modal-dialog-centered"
       onMouseDown={[Function]}
     >
       <div
@@ -64,7 +64,7 @@ exports[`matches snapshot 1`] = `
                   <select
                     className="form-control"
                     id="parent-todo"
-                    onSelect={[Function]}
+                    onChange={[Function]}
                   >
                     <option>
                       Не выбрано
@@ -118,7 +118,7 @@ exports[`matches snapshot 1`] = `
           className="modal-footer"
         >
           <button
-            className="btn btn-primary"
+            className="w-100 btn btn-primary"
             data-testid="add-todo"
             disabled={false}
             onClick={[Function]}

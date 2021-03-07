@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from 'react-bootstrap'
+import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap'
 
 import TodoItem from '../containers/TodoItem'
 import AddItemModal from '../containers/AddItemModal'
@@ -10,13 +10,19 @@ const TodoList = ({ todos }) => {
   const [show, setShow] = useState(false)
 
   return (
-    <>
-      <div data-testid='todo-list'>{getTodoList(todos, getChildren(todos, undefined))}</div>
-      <Button data-testid='add-item' variant='primary' onClick={() => setShow(true)}>
+    <Container className='d-flex flex-column justify-content-between h-100'>
+      <ListGroup data-testid='todo-list' as='ul'>
+        {getTodoList(todos, getChildren(todos, undefined))}
+      </ListGroup>
+      <Button
+        data-testid='add-item'
+        variant='primary'
+        className='mt-3'
+        onClick={() => setShow(true)}>
         Добавить элемент
       </Button>
       <AddItemModal show={show} onHide={() => setShow(false)} data-testid='modal' />
-    </>
+    </Container>
   )
 }
 
@@ -24,9 +30,11 @@ function getTodoList(todos, children) {
   return sortTodos(children).map((todo, i) => {
     const childs = todo.uid && getChildren(todos, todo.uid)
     return (
-      <div className='ms-1' key={todo.uid ?? i} data-testid={todo.uid ?? i}>
-        <TodoItem isDone={todo.isDone} todo={todo} />
-        {childs && getTodoList(todos, childs)}
+      <div key={todo.uid ?? i} data-testid={todo.uid ?? i}>
+        <ListGroup.Item as='li' key={todo.uid ?? i}>
+          <TodoItem isDone={todo.isDone} todo={todo} />
+        </ListGroup.Item>
+        {childs && <div className='ml-3'>{getTodoList(todos, childs)}</div>}
       </div>
     )
   })

@@ -20,7 +20,7 @@ Array [
     tabIndex={-1}
   >
     <div
-      className="modal-dialog"
+      className="modal-dialog modal-dialog-centered"
       onMouseDown={[Function]}
     >
       <div
@@ -38,24 +38,40 @@ Array [
         <div
           className="modal-footer"
         >
-          <button
-            className="btn btn-primary"
-            data-testid="delete-todo"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
+          <div
+            className="container"
           >
-            Да
-          </button>
-          <button
-            className="btn btn-secondary"
-            data-testid="not-delete-todo"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Нет
-          </button>
+            <div
+              className="row"
+            >
+              <div
+                className="col"
+              >
+                <button
+                  className="w-100 btn btn-primary"
+                  data-testid="delete-todo"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Да
+                </button>
+              </div>
+              <div
+                className="col"
+              >
+                <button
+                  className="w-100 btn btn-secondary"
+                  data-testid="not-delete-todo"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Нет
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

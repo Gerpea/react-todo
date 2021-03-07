@@ -16,7 +16,7 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
   }, [todos])
 
   return (
-    <Modal {...rest} animation={false}>
+    <Modal {...rest} animation={false} centered>
       <Modal.Header>
         <Modal.Title>Добавить элемент</Modal.Title>
       </Modal.Header>
@@ -64,10 +64,11 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
       <Modal.Footer>
         <Button
           variant='primary'
+          className='w-100'
           onClick={() => {
             rest.onHide?.call()
-            console.log(parent)
             onCreate?.call(undefined, title, parent)
+            setParent(undefined)
           }}
           data-testid='add-todo'>
           Добавить

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Card, Form, Row, Col } from 'react-bootstrap'
+import { Card, Form, Row, Col, Container } from 'react-bootstrap'
 
 import DeleteItemModal from '../containers/DeleteItemModal'
 
@@ -9,32 +9,31 @@ const TodoItem = ({ todo, markTodo }) => {
   const [show, setShow] = useState(false)
   return (
     <>
-      <Card body data-testid='todo-item'>
-        <Row>
-          <Col>
-            <Form.Check
-              data-testid='item'
-              type='checkbox'
-              label={todo.title}
-              value={todo.isDone || false}
-              onClick={() => {
-                markTodo?.call(undefined, todo.uid, !todo.isDone)
-              }}
-            />
-          </Col>
-          <Col>
-            {todo.isDone && (
-              <Card.Link
-                data-testid='delete-link'
-                onClick={() => {
-                  setShow(true)
-                }}>
-                Удалить
-              </Card.Link>
-            )}
-          </Col>
-        </Row>
-      </Card>
+      <Container className='d-flex justify-content-start'>
+        <Form.Check
+          data-testid='item'
+          type='checkbox'
+          id={todo.uid}
+          label={todo.title}
+          value={todo.isDone || false}
+          className={todo.isDone ? 'marked' : ''}
+          onClick={() => {
+            markTodo?.call(undefined, todo.uid, !todo.isDone)
+          }}
+        />
+        {todo.isDone && (
+          <a
+            href='#'
+            className='pl-2 link-primary'
+            data-testid='delete-link'
+            onClick={(e) => {
+              e.preventDefault()
+              setShow(true)
+            }}>
+            Удалить
+          </a>
+        )}
+      </Container>
       <DeleteItemModal todo={todo} show={show} onHide={() => setShow(false)} />
     </>
   )
