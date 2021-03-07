@@ -11,8 +11,18 @@
 
 @import '~bootstrap/scss/bootstrap';
 
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
 body {
   overflow: hidden;
+}
+
+body {
+  height: 100%;
 }
 
 .marked {

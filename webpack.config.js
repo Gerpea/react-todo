@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode !== 'production'
@@ -126,6 +127,7 @@ module.exports = (env, argv) => {
             : undefined
         )
       ),
+      new FaviconsWebpackPlugin('./assets/logo.png'),
       ...(!isDevelopment
         ? [
             new MiniCssExtractPlugin({
