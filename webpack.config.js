@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     bail: !isDevelopment,
-    entry: ['react-hot-loader/patch', './src/index.js'],
+    entry: ['./src/index.js'],
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: isDevelopment ? 'bundle.js' : '[name].[contenthash:8].js',
