@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { compose, createStore } from 'redux'
+import { createStore } from 'redux'
+import { devToolsEnhancer } from 'redux-devtools-extension/developmentOnly'
 
 import { rootReducer } from './state/rootReducer'
 import App from './App'
 
-const store = createStore(
-  rootReducer,
-  compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-)
+const store = createStore(rootReducer, devToolsEnhancer())
 
 const render = (Component) => {
   ReactDOM.render(

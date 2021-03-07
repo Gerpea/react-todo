@@ -16,7 +16,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, 'dist'),
       filename: isDevelopment ? 'bundle.js' : '[name].[contenthash:8].js',
       chunkFilename: isDevelopment ? '[name].chunk.js' : '[name].[contenthash:8].chunk.js',
-      publicPath: '/',
+      publicPath: process.env.PUBLIC_PATH || '/',
       clean: true,
     },
     devtool: isDevelopment ? 'cheap-module-source-map' : false,
@@ -34,7 +34,14 @@ module.exports = (env, argv) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [...(isDevelopment ? [require.resolve('react-refresh/babel')] : [])],
+              },
+            },
+          ],
         },
         {
           test: /\.(s*)css$/,
