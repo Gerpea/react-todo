@@ -1,7 +1,7 @@
 import React from 'react'
-import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import renderer from 'react-test-renderer'
 
+import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import TodoList from '../../src/components/TodoList'
 
 afterEach(cleanup)
@@ -58,8 +58,8 @@ describe('add item', () => {
 
   it('should render add item modal when button clicked', () => {
     const leftClick = { button: 0 }
-
     const { getByTestId, queryByTestId } = render(<TodoList />)
+
     fireEvent.click(getByTestId('add-item'), leftClick)
 
     expect(queryByTestId('modal')).not.toBeNull()

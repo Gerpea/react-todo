@@ -1,5 +1,4 @@
 import reducer from '../../../src/state/todos/reducer'
-import * as types from '../../../src/state/todos/types'
 import * as actions from '../../../src/state/todos/actions'
 
 it('should return the initial state', () => {

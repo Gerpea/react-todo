@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
-import { Card, Form, Row, Col, Container } from 'react-bootstrap'
+import { Form, Container } from 'react-bootstrap'
 
 import DeleteItemModal from '../containers/DeleteItemModal'
 
 const TodoItem = ({ todo, markTodo }) => {
   const [show, setShow] = useState(false)
+
   return (
     <>
       <Container className='d-flex justify-content-start'>

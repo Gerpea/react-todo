@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { Modal, Button, Col, Row, Container } from 'react-bootstrap'
 
 const DeleteItemModal = ({ todo, onDelete, onHide, ...rest }) => {

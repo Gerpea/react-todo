@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-
 import { Col, Form, Modal, Button } from 'react-bootstrap'
 
 const AddItemModal = ({ todos, onCreate, ...rest }) => {
-  const [parent, setParent] = useState()
   const [parents, setParents] = useState([])
+  const [parent, setParent] = useState()
   const [title, setTitle] = useState('')
 
   useEffect(() => {
@@ -21,7 +20,10 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
         <Modal.Title>Добавить элемент</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault()
+          }}>
           <Form.Group controlId='parent-todo' data-testid='select-parent'>
             <Form.Row>
               <Col>

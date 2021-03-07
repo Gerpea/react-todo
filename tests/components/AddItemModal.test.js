@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import renderer from 'react-test-renderer'
 
+import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import AddItemModal from '../../src/components/AddItemModal'
 
 afterEach(cleanup)
@@ -61,8 +61,8 @@ it('matches snapshot', () => {
     { title: 'Item 1', uid: '1' },
     { title: 'Item 2', uid: '2' },
   ]
-
   const container = document.createElement('div')
+
   const tree = renderer
     .create(
       <div>

@@ -1,8 +1,7 @@
 import React from 'react'
-
-import { emptyWrapper, render, cleanup } from '../utils'
 import renderer from 'react-test-renderer'
 
+import { emptyWrapper, render, cleanup } from '../utils'
 import TodoItem from '../../src/components/TodoItem'
 
 afterEach(cleanup)

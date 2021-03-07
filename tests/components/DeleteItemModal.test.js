@@ -1,24 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import renderer from 'react-test-renderer'
 
+import { emptyWrapper, render, cleanup, fireEvent } from '../utils'
 import DeleteItemModal from '../../src/components/DeleteItemModal'
 
 afterEach(cleanup)
 
 it('renders without crashing', () => {
   render(<DeleteItemModal />)
-})
-
-ReactDOM.createPortal = (node) => node
-it('matches snapshot', () => {
-  const container = document.createElement('div')
-  const tree = renderer
-    .create(ReactDOM.createPortal(<DeleteItemModal show={true} />, container))
-    .toJSON()
-
-  expect(tree).toMatchSnapshot()
 })
 
 it('should call onHide when cancel button clicked', () => {
@@ -43,4 +33,15 @@ describe('onDelete', () => {
 
     expect(onDelete.mock.calls.length).toBe(1)
   })
+})
+
+ReactDOM.createPortal = (node) => node
+it('matches snapshot', () => {
+  const container = document.createElement('div')
+
+  const tree = renderer
+    .create(ReactDOM.createPortal(<DeleteItemModal show={true} />, container))
+    .toJSON()
+
+  expect(tree).toMatchSnapshot()
 })
