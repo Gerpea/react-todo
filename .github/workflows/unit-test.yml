@@ -23,6 +23,13 @@ jobs:
     name: Coverage
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v1
+       with:
+          node-version: 14.x
+      - run: npm ci
       - uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm run test:coverage
+          debug: true
