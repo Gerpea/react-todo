@@ -21,7 +21,7 @@ const TodoList = ({ todos }) => {
 }
 
 function getTodoList(todos, children) {
-  return children.map((todo, i) => {
+  return sortTodos(children).map((todo, i) => {
     const childs = todo.uid && getChildren(todos, todo.uid)
     return (
       <div className='ms-1' key={todo.uid ?? i} data-testid={todo.uid ?? i}>
@@ -30,6 +30,10 @@ function getTodoList(todos, children) {
       </div>
     )
   })
+}
+
+function sortTodos(todos) {
+  return todos.sort((a, b) => (a.isDone === b.isDone ? 0 : a.isDone ? 1 : -1))
 }
 
 function getChildren(todos, uid) {
