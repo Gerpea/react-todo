@@ -1,14 +1,16 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
+import React, { Suspense } from 'react'
 
 import './App.scss'
-import TodoList from './containers/TodoList'
+const TodoList = React.lazy(() => import('./containers/TodoList'))
+const Container = React.lazy(() => import('react-bootstrap/Container'))
 
 const App = () => {
   return (
-    <Container fluid='md' className='h-100 pt-2 pb-3'>
-      <TodoList />
-    </Container>
+    <Suspense fallback={<></>}>
+      <Container fluid='md' className='h-100 pt-2 pb-3'>
+        <TodoList />
+      </Container>
+    </Suspense>
   )
 }
 
