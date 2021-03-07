@@ -5,10 +5,21 @@ it('should create action to add todo', () => {
   const title = 'Item'
   const expected = {
     type: types.ADD_TODO,
-    payload: title,
+    payload: { title },
   }
 
   expect(actions.addTodo(title)).toEqual(expected)
+})
+
+it('should create action to add todo with parent', () => {
+  const title = 'Item'
+  const parentUid = '1'
+  const expected = {
+    type: types.ADD_TODO,
+    payload: { title, parentUid },
+  }
+
+  expect(actions.addTodo(title, parentUid)).toEqual(expected)
 })
 
 it('should create action to remove todo', () => {

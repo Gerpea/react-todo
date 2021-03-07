@@ -27,6 +27,20 @@ describe('todos', () => {
       todos.length + 1
     )
   })
+
+  it('should not render parents which is more than 2th generation', () => {
+    const todos = [
+      { title: 'Item1', uid: '1' },
+      { title: 'Item2', uid: '2', parentUid: '1' },
+      { title: 'Item3', uid: '3', parentUid: '2' },
+    ]
+
+    const { getByTestId } = render(<AddItemModal show={true} todos={todos} />)
+
+    expect(getByTestId('select-parent').getElementsByTagName('select')[0].childElementCount).toBe(
+      todos.length
+    )
+  })
 })
 
 describe('onCreate', () => {

@@ -66,6 +66,9 @@ exports[`matches snapshot 1`] = `
                     id="parent-todo"
                     onSelect={[Function]}
                   >
+                    <option>
+                      Не выбрано
+                    </option>
                     <option
                       value="1"
                     >
@@ -75,9 +78,6 @@ exports[`matches snapshot 1`] = `
                       value="2"
                     >
                       Item 2
-                    </option>
-                    <option>
-                      Не выбрано
                     </option>
                   </select>
                 </div>

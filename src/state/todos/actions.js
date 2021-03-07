@@ -1,9 +1,9 @@
 import { ADD_TODO, REMOVE_TODO, MARK_TODO } from './types'
 
-export function addTodo(title) {
+export function addTodo(title, parentUid) {
   return {
     type: ADD_TODO,
-    payload: title,
+    payload: { title, parentUid },
   }
 }
 

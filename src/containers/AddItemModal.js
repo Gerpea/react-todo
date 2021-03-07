@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  onCreate: (title) => addTodo(title),
+  onCreate: (title, parentUid) => addTodo(title, parentUid),
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItemModal)

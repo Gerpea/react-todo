@@ -9,7 +9,10 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
   const [title, setTitle] = useState('')
 
   useEffect(() => {
-    setParents([{ title: 'Не выбрано' }, ...todos])
+    setParents([
+      { title: 'Не выбрано' },
+      ...todos.filter((todo) => getParentCount(todos, todo.uid) < 2),
+    ])
   }, [todos])
 
   return (
@@ -28,7 +31,9 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
                 <Form.Control
                   as='select'
                   value={parent}
-                  onSelect={(e) => setParent(e.target.value)}>
+                  onChange={(e) => {
+                    setParent(e.target.value)
+                  }}>
                   {parents.map((todo, i) => {
                     return (
                       <option value={todo.uid} key={todo.uid ?? i}>
@@ -61,7 +66,8 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
           variant='primary'
           onClick={() => {
             rest.onHide?.call()
-            onCreate?.call(undefined, title)
+            console.log(parent)
+            onCreate?.call(undefined, title, parent)
           }}
           data-testid='add-todo'>
           Добавить
@@ -69,6 +75,15 @@ const AddItemModal = ({ todos, onCreate, ...rest }) => {
       </Modal.Footer>
     </Modal>
   )
+}
+
+function getParentCount(todos, uid) {
+  const parentUid = todos.find((todo) => todo.uid === uid)?.parentUid
+  if (parentUid) {
+    return 1 + getParentCount(todos, parentUid)
+  } else {
+    return 0
+  }
 }
 
 AddItemModal.propTypes = {
