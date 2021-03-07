@@ -11,11 +11,15 @@ const store = createStore(
   compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.querySelector('#root')
-)
+const render = (Component) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <Component />
+      </Provider>
+    </React.StrictMode>,
+    document.querySelector('#root')
+  )
+}
+
+render(App)
