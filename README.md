@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9383382e6a066be614b6/maintainability)](https://codeclimate.com/github/Gerpea/react-todo/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9383382e6a066be614b6/test_coverage)](https://codeclimate.com/github/Gerpea/react-todo/test_coverage)
 
-Вы можете найти приложение по [ссылке](https://gerpea.github.io/react-todo/)
+**Вы можете найти приложение [здесь](https://gerpea.github.io/react-todo/)**
 
 ## Содержание
 
@@ -15,24 +15,24 @@
 
 ### Команды
 
-- npm run start - Запускает сервер для разработки
-- npm run dev - Запускает сервер для разработки и открывает страницу в браузере
-- npm run build - Собирает проект
-- npm run serve - Запускает сервер
-- npm run test - Запускает тесты
-- npm run test:coverage - Запускает тесты и генерирует файл [`lcov.info`](https://github.com/linux-test-project/lcov)
-- npm run cypress - Запускает _cypress_
+- `npm run start` - Запускает сервер для разработки
+- `npm run dev` - Запускает сервер для разработки и открывает страницу в браузере
+- `npm run build` - Собирает проект
+- `npm run serve` - Запускает сервер
+- `npm run test` - Запускает тесты
+- `npm run test:coverage` - Запускает тесты и генерирует файл [`lcov.info`](https://github.com/linux-test-project/lcov)
+- `npm run cypress` - Запускает _cypress_
 
 ### Запуск
 
-- Запустить приложение с оптимизацией
+- C оптимизацией
 
 ```bash
 npm run build
 npm run serve
 ```
 
-> Приложение можно будет увидеть в браузере по адресу [`localhost:9000`](http://localhost:9000)
+> Приложение можно будет найти по адресу [`http://localhost:9000`](http://localhost:9000)
 
 ---
 
@@ -44,6 +44,7 @@ npm run dev
 
 ### Использованные технологии
 
+- [Webpack](https://webpack.js.org/)
 - [React](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com/), [ReactBootstrap](https://react-bootstrap.github.io/)
 - [Redux](https://redux.js.org/), [ReactRedux](https://react-redux.js.org/)
